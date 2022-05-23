@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperScissors</title>
+</head>
+<body>
+    <script>
+        const choices = ["rock", "paper", "scissors"];
+        let playerSelection = "rock";
+        const computerSelection = computerPlay();
+        const tie = "Its A Tie!";
+        const win = "You Win!";
+        const lose = "You Lose!";
+        function computerPlay() {
+            return choices[Math.floor(Math.random()*3)];
+        }
+        function round(playerSelection, computerSelection) {
+            computerSelection = computerPlay();
+            if (playerSelection == "rock" && computerSelection == "rock") {
+                console.log(playerSelection);
+                console.log(computerSelection);
+                return tie;
+            }
+            else if (playerSelection == "rock" && computerSelection == "paper") {
+                console.log(playerSelection);
+                console.log(computerSelection);
+                return lose;
+            }
+            else if (playerSelection == "rock" && computerSelection == "scissors") {
+                console.log(playerSelection);
+                console.log(computerSelection);
+                return win;
+            }
+            else if (playerSelection == "paper" && computerSelection == "rock") {
+                console.log(playerSelection);
+                console.log(computerSelection);
+                return win;
+            }
+            else if (playerSelection == "paper" && computerSelection == "paper") {
+                console.log(playerSelection);
+                console.log(computerSelection);
+                return tie;
+            }
+            else if (playerSelection == "paper" && computerSelection == "scissors") {
+                console.log(playerSelection);
+                console.log(computerSelection);
+                return lose;
+            }
+            else if (playerSelection == "scissors" && computerSelection == "rock") {
+                console.log(playerSelection);
+                console.log(computerSelection);
+                return lose;
+            }
+            else if (playerSelection == "scissors" && computerSelection == "paper") {
+                console.log(playerSelection);
+                console.log(computerSelection);
+                return win;
+            }
+            else if (playerSelection == "scissors" && computerSelection == "scissors") {
+                console.log(playerSelection);
+                console.log(computerSelection);
+                return tie;
+            }
+        }
+
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                playerSelection1 = prompt();
+                playerSelection = playerSelection1.toLowerCase();
+                console.log(round(playerSelection, computerSelection));
+            }
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
