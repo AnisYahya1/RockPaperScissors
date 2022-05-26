@@ -5,80 +5,102 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RockPaperScissors</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <div>
+        <img src="https://miro.medium.com/max/800/1*8du96SQUQ0NlWmWvVu20Zw.png">
+    </div>
+
+    <div class="Buttons">
+        <button class = "rock">Rock</button>
+        <button class = "paper">Paper</button>
+        <button class="scissors">Scissors</button>
+    </div>
+
+    <div id="result"></div>
+
+
     <script>
         const choices = ["rock", "paper", "scissors"];
         let playerSelection = "rock";
-        const computerSelection = computerPlay();
         const tie = "Its A Tie!";
         const win = "You Win!";
         const lose = "You Lose!";
+        let playerScore = 0;
+        let computerScore = 0;
+        const buttons = document.querySelectorAll('button');
+        
+
+
         function computerPlay() {
             return choices[Math.floor(Math.random()*3)];
         }
-        function round(playerSelection, computerSelection) {
-            computerSelection = computerPlay();
+
+        function round(playerSelection) {
+            const computerSelection = computerPlay();
+
+            if (computerScore == 5||playerScore == 5){
+                document.getElementById('result').innerHTML = "GAME OVER";
+                return;
+            }
+           
             if (playerSelection == "rock" && computerSelection == "rock") {
-                console.log(playerSelection);
-                console.log(computerSelection);
-                return tie;
+                document.getElementById('result').innerHTML = tie + "<br><br>Your Choice = ROCK<br><br>Computer Choice = ROCK" + "<br><br> Player Score: " + playerScore + "<br><br> Computer Score: " + computerScore;
+                return;
             }
             else if (playerSelection == "rock" && computerSelection == "paper") {
-                console.log(playerSelection);
-                console.log(computerSelection);
-                return lose;
+                computerScore+=1;
+                document.getElementById('result').innerHTML = lose + "<br><br>Your Choice = ROCK<br><br>Computer Choice = PAPER" + "<br><br> Player Score: " + playerScore + "<br><br> Computer Score: " + computerScore;
+                
+                return;
             }
             else if (playerSelection == "rock" && computerSelection == "scissors") {
-                console.log(playerSelection);
-                console.log(computerSelection);
-                return win;
+                playerScore +=1;
+                document.getElementById('result').innerHTML = win + "<br><br>Your Choice = ROCK<br><br>Computer Choice = SCISSORS" + "<br><br> Player Score: " + playerScore + "<br><br> Computer Score: " + computerScore;
+                
+                return;
             }
             else if (playerSelection == "paper" && computerSelection == "rock") {
-                console.log(playerSelection);
-                console.log(computerSelection);
-                return win;
+                playerScore +=1;
+                document.getElementById('result').innerHTML = win + "<br><br>Your Choice = PAPER<br><br>Computer Choice = ROCK" + "<br><br> Player Score: " + playerScore + "<br><br> Computer Score: " + computerScore;
+                
+                return;
             }
             else if (playerSelection == "paper" && computerSelection == "paper") {
-                console.log(playerSelection);
-                console.log(computerSelection);
-                return tie;
+                document.getElementById('result').innerHTML = tie + "<br><br>Your Choice = PAPER<br><br>Computer Choice = PAPER" + "<br><br> Player Score: " + playerScore + "<br><br> Computer Score: " + computerScore;
+                return;
             }
             else if (playerSelection == "paper" && computerSelection == "scissors") {
-                console.log(playerSelection);
-                console.log(computerSelection);
-                return lose;
+                computerScore+=1;
+                document.getElementById('result').innerHTML = lose + "<br><br>Your Choice = PAPER<br><br>Computer Choice = SCISSORS" + "<br><br> Player Score: " + playerScore + "<br><br> Computer Score: " + computerScore;
+                
+                return;
             }
             else if (playerSelection == "scissors" && computerSelection == "rock") {
-                console.log(playerSelection);
-                console.log(computerSelection);
-                return lose;
+                computerScore+=1;
+                document.getElementById('result').innerHTML = lose + "<br><br>Your Choice = SCISSORS<br><br>Computer Choice = ROCK" + "<br><br> Player Score: " + playerScore + "<br><br> Computer Score: " + computerScore;
+                
+                return;
             }
             else if (playerSelection == "scissors" && computerSelection == "paper") {
-                console.log(playerSelection);
-                console.log(computerSelection);
-                return win;
+                playerScore +=1;
+                document.getElementById('result').innerHTML = win + "<br><br>Your Choice = SCISSORS<br><br>Computer Choice =PAPER" + "<br><br> Player Score: " + playerScore + "<br><br> Computer Score: " + computerScore;
+                
+                return;
             }
             else if (playerSelection == "scissors" && computerSelection == "scissors") {
-                console.log(playerSelection);
-                console.log(computerSelection);
-                return tie;
+                document.getElementById('result').innerHTML = tie + "<br><br>Your Choice = SCISSORS<br><br>Computer Choice = SCISSORS" + "<br><br> Player Score: " + playerScore + "<br><br> Computer Score: " + computerScore;
+                return;
             }
+            
         }
-
-        function game() {
-            for (let i = 0; i < 5; i++) {
-                playerSelection1 = prompt();
-                playerSelection = playerSelection1.toLowerCase();
-                console.log(round(playerSelection, computerSelection));
-            }
-        }
-
-
-
-
-
-
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                round(button.className);
+            })
+        })
 
     </script>
 </body>

@@ -1,0 +1,24 @@
+body {
+    background-color:orange;
+}
+button {
+    background-color: rgb(255, 230, 0);
+    border-color: yellow;
+    font-size: 30px;
+    color: rgb(44, 44, 44);
+}
+
+.Buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
